@@ -40,8 +40,8 @@ int is_equal(void* key1, void* key2){
 
 long resuelve(HashMap *map, int posicion)
 {
-  long nuevo = 0;
-   for(nuevo; nuevo<map->capacity; nuevo++)
+  
+   for(long nuevo = 0; nuevo<map->capacity; nuevo++)
      {
        if(map->buckets[nuevo] == NULL) return nuevo;
      }

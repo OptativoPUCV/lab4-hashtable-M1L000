@@ -55,11 +55,14 @@ void insertMap(HashMap * map, char * key, void * value) {
     if(map->buckets[indice] == NULL)
     {
       map->buckets[indice] = createPair(key, value);
+      (map->size)++;
+
     }
     else
     {
       long nuevo = resuelve(map,indice);
       map->buckets[nuevo] = createPair(key,value);
+      (map->size)++;
     }
 
 }

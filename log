@@ -46,3 +46,13 @@ hashmap.c:60:19: error: void value not ignored as it ought to be
       |                   ^~~~~~~~
 Compilation failed
 eed14b0
+Wed 24 Apr 2024 07:08:29 PM UTC: 
+ hashmap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘resuelve’:
+hashmap.c:43:22: error: array subscript is not an integer
+   43 |    while(map->buckets[posicion] != NULL)
+      |                      ^
+Compilation failed
+d8abac5

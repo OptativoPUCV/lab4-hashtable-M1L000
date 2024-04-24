@@ -57,9 +57,9 @@ void insertMap(HashMap * map, char * key, void * value) {
     }
     else
     {
-      int nueva = resuelve(map,&indice);
-      strcpy(map->buckets[nueva]->key,key);
-      map->buckets[nueva]->value = value;
+      resuelve(map,&indice);
+      strcpy(map->buckets[indice]->key,key);
+      map->buckets[indice]->value = value;
     }
 
 }

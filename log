@@ -316,3 +316,16 @@ test.c:(.text+0xa68): undefined reference to `insertMap'
 collect2: error: ld returned 1 exit status
 Compilation failed
 7de2a53
+Wed 24 Apr 2024 08:14:50 PM UTC: 
+ hashmap.c | 30 +++++++++++++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:80:30: error: ‘Pair’ has no member named ‘next’
+   80 |             current = current->next;
+      |                              ^~
+hashmap.c:84:17: error: ‘Pair’ has no member named ‘next’
+   84 |         new_pair->next = map->buckets[index];
+      |                 ^~
+Compilation failed
+070364c

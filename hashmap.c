@@ -40,7 +40,7 @@ int is_equal(void* key1, void* key2){
 
 void resuelve(HashMap *map, int *posicion)
 {
-   while(map->buckets[*posicion] != NULL)
+   while(map->buckets[(*posicion)] != NULL)
      {
        (*posicion)++;
      }  

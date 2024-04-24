@@ -42,11 +42,10 @@ int resuelve(HashMap *map, int posicion)
 {
    while(map->buckets[(posicion)] != NULL)
      {
-       if(map->buckets[posicion] == NULL) return posicion;
        (posicion)++;
        
      }
-  
+  if(map->buckets[posicion] == NULL) return posicion;
 }
 
 

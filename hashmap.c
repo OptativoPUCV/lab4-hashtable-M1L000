@@ -38,14 +38,17 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
-long resuelve(HashMap *map, int posicion)
+long resuelve(HashMap *map, int posicion, char *key)
 {
-  
-   for(long nuevo = 0; nuevo<map->capacity; nuevo++)
+   for(long i = 0; i < map->capacity;i++)
      {
-       if(map->buckets[nuevo] == NULL) return nuevo;
+       if(strcmp(map->buckets[i]->key,key) ==0) return -1;
      }
-  return -1; 
+  for(long j = 0; j < map->capacity;j++)
+    {
+      if(map->buckets[j] == NULL) return j;
+    }
+  return -1;
 }
 
 
@@ -60,7 +63,7 @@ void insertMap(HashMap * map, char * key, void * value) {
     }
     else
     {
-      long nuevo = resuelve(map,indice);
+      long nuevo = resuelve(map,indice,key);
       map->buckets[nuevo] = createPair(key,value);
       (map->size)++;
       (map->current) = nuevo;

@@ -46,7 +46,7 @@ long resuelve(HashMap *map, int posicion, char *key)
      }
   for(long j = 0; j < map->capacity;j++)
     {
-      if(map->buckets[j] == NULL) return j;
+      if(map->buckets[j]->key == NULL) return j;
     }
   return -1;
 }

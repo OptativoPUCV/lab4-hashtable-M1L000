@@ -70,19 +70,18 @@ void insertMap(HashMap * map, char * key, void * value) {
     } else {
         // Collision occurred, handle it using separate chaining
         // Traverse the linked list to check if the key already exists
-        Pair *current = map->buckets[index];
-        while(current != NULL) {
-            if(is_equal(current->key, key)) {
+        long current = index; // current indica la posición actual en la tabla hash
+        while(map->buckets[current] != NULL) {
+            if(is_equal(map->buckets[current]->key, key)) {
                 // Key already exists, update the value and return
-                current->value = value;
+                map->buckets[current]->value = value;
                 return;
             }
-            current = current->next;
+            current = resuelveColision(map, current, key); // Actualizamos current según la resolución de colisiones
         }
         // Key doesn't exist in the linked list, create a new pair and append it
         Pair *new_pair = createPair(key, value);
-        new_pair->next = map->buckets[index];
-        map->buckets[index] = new_pair;
+        map->buckets[current] = new_pair; // Insertamos el nuevo par en la posición encontrada
         map->size++;
     }
 }

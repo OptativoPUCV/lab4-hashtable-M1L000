@@ -8,3 +8,13 @@ Wed 24 Apr 2024 06:16:24 PM UTC:
  tests:  1|5
 total_score: 10/70
 41fd9fc
+Wed 24 Apr 2024 06:51:01 PM UTC: 
+ hashmap.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:45:32: error: expected expression before ‘)’ token
+   45 |     if(map->buckets[indice] != )
+      |                                ^
+Compilation failed
+a90782b

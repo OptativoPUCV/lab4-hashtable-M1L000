@@ -42,7 +42,7 @@ long resuelve(HashMap *map, int posicion, char *key)
 {
    for(long i = 0; i < map->capacity;i++)
      {
-       if(strcmp(map->buckets[i]->key,NULL) ==0) return -1;
+       if(strcmp(map->buckets[i]->key,"NULL") ==0) return -1;
      }
   for(long j = 0; j < map->capacity;j++)
     {

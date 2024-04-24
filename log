@@ -18,3 +18,17 @@ hashmap.c:45:32: error: expected expression before ‘)’ token
       |                                ^
 Compilation failed
 a90782b
+Wed 24 Apr 2024 07:07:22 PM UTC: 
+ hashmap.c | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘resuelve’:
+hashmap.c:43:22: error: array subscript is not an integer
+   43 |    while(map->buckets[posicion] != NULL)
+      |                      ^
+hashmap.c: In function ‘insertMap’:
+hashmap.c:60:27: error: void value not ignored as it ought to be
+   60 |       int posicionnueva = resuelve(map,&indice);
+      |                           ^~~~~~~~
+Compilation failed
+de783ea

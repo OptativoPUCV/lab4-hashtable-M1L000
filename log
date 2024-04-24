@@ -192,3 +192,14 @@ Wed 24 Apr 2024 07:26:01 PM UTC:
  tests:  4|5
 total_score: 20/70
 178c232
+Wed 24 Apr 2024 07:30:23 PM UTC: 
+ hashmap.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘resuelve’:
+hashmap.c:44:4: error: statement with no effect [-Werror=unused-value]
+   44 |    for(nuevo; nuevo<map->capacity; nuevo++)
+      |    ^~~
+cc1: all warnings being treated as errors
+Compilation failed
+c5f5011

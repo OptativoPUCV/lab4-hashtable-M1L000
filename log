@@ -114,3 +114,31 @@ hashmap.c:49:1: error: control reaches end of non-void function [-Werror=return-
 cc1: all warnings being treated as errors
 Compilation failed
 adcc81b
+Wed 24 Apr 2024 07:21:13 PM UTC: 
+ hashmap.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:57:30: error: ‘createPairkey’ undeclared (first use in this function); did you mean ‘createPair’?
+   57 |       map->buckets[indice] = createPairkey, value);
+      |                              ^~~~~~~~~~~~~
+      |                              createPair
+hashmap.c:57:30: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:57:43: error: left-hand operand of comma expression has no effect [-Werror=unused-value]
+   57 |       map->buckets[indice] = createPairkey, value);
+      |                                           ^
+hashmap.c:57:7: error: statement with no effect [-Werror=unused-value]
+   57 |       map->buckets[indice] = createPairkey, value);
+      |       ^~~
+hashmap.c:57:50: error: expected ‘;’ before ‘)’ token
+   57 |       map->buckets[indice] = createPairkey, value);
+      |                                                  ^
+      |                                                  ;
+hashmap.c:57:50: error: expected statement before ‘)’ token
+hashmap.c: In function ‘resuelve’:
+hashmap.c:49:1: error: control reaches end of non-void function [-Werror=return-type]
+   49 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+8ae2695

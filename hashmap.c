@@ -54,14 +54,12 @@ void insertMap(HashMap * map, char * key, void * value) {
     long indice = hash(key,map->capacity);
     if(map->buckets[indice] == NULL)
     {
-      strcpy(map->buckets[indice]->key,key);
-      map->buckets[indice]->value = value;
+      map->buckets[indice] = createPairkey, value);
     }
     else
     {
       long nuevo = resuelve(map,indice);
-      strcpy(map->buckets[nuevo]->key,key);
-      map->buckets[nuevo]->value = value;
+      map->buckets[nuevo] = createPair(key,value);
     }
 
 }

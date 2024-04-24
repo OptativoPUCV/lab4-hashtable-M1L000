@@ -61,8 +61,8 @@ void insertMap(HashMap * map, char * key, void * value) {
     else
     {
       int nuevo = resuelve(map,indice);
-      strcpy(map->buckets[indice]->key,key);
-      map->buckets[indice]->value = value;
+      strcpy(map->buckets[nuevo]->key,key);
+      map->buckets[nuevo]->value = value;
     }
 
 }

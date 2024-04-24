@@ -53,7 +53,7 @@ long resuelve(HashMap *map, int posicion, char *key)
 
 
 void insertMap(HashMap * map, char * key, void * value) {
-    if(map==NULL || strcmp(key==NULL) return;
+    if(map==NULL || key==NULL) return;
     long indice = hash(key,map->capacity);
     if(map->buckets[indice] == NULL)
     {

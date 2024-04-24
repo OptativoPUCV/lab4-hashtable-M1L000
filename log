@@ -287,3 +287,16 @@ Wed 24 Apr 2024 07:49:08 PM UTC:
  1 file changed, 1 insertion(+), 1 deletion(-)
  tests:  0|0
 46ed445
+Wed 24 Apr 2024 08:13:12 PM UTC: 
+ hashmap.c | 68 ++++++++++++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 41 insertions(+), 27 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:80:30: error: ‘Pair’ has no member named ‘next’
+   80 |             current = current->next;
+      |                              ^~
+hashmap.c:84:17: error: ‘Pair’ has no member named ‘next’
+   84 |         new_pair->next = map->buckets[index];
+      |                 ^~
+Compilation failed
+c2a1248

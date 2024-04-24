@@ -38,39 +38,53 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
-long resuelve(HashMap *map, int posicion, char *key)
-{
-   for(long i = 0; i < map->capacity;i++)
-     {
-       if(is_equal(key,map->buckets[i]->key)==1) return -1;
-     }
-  for(long j = 0; j < map->capacity;j++)
-    {
-      if(is_equal(NULL,map->buckets[j]->key)) return j;
+long resuelveColision(HashMap *map, int posicion, char *key) {
+    // Verificar si la posición está dentro de los límites
+    if (posicion < 0 || posicion >= map->capacity)
+        return -1; // Valor de retorno para indicar error
+
+    // Usar resolución de colisiones lineal
+    int i = 1; // Contador para el desplazamiento
+    long index = (posicion + i) % map->capacity; // Calcular el nuevo índice
+
+    // Buscar el siguiente índice vacío o el índice con la misma clave
+    while (map->buckets[index] != NULL && !is_equal(map->buckets[index]->key, key)) {
+        i++;
+        index = (posicion + i) % map->capacity;
     }
-  return -1;
+
+    return index; // Devolver el índice encontrado
 }
 
 
 void insertMap(HashMap * map, char * key, void * value) {
-    if(map==NULL || key==NULL) return;
-    long indice = hash(key,map->capacity);
-    if(map->buckets[indice] == NULL)
-    {
-      map->buckets[indice] = createPair(key, value);
-      (map->size)++;
-      (map->current) = indice;
-    }
-    else
-    {
-      long nuevo = resuelve(map,indice,key);
-      if(nuevo != -1)  
-      {  map->buckets[nuevo] = createPair(key,value);
-        (map->size)++;
-        (map->current) = nuevo;
-      }
-    }
+    if(map == NULL || key == NULL)
+        return;
 
+    long index = hash(key, map->capacity);
+
+    // If the bucket at the index is empty, create a new pair and insert it
+    if(map->buckets[index] == NULL) {
+        map->buckets[index] = createPair(key, value);
+        map->size++;
+    } else {
+        // Collision occurred, handle it using separate chaining
+        // Traverse the linked list to check if the key already exists
+        Pair *current = map->buckets[index];
+        while(current != NULL) {
+            if(is_equal(current->key, key)) {
+                // Key already exists, update the value and return
+                current->value = value;
+                return;
+            }
+            current = current->next;
+        }
+        // Key doesn't exist in the linked list, create a new pair and append it
+        Pair *new_pair = createPair(key, value);
+        new_pair->next = map->buckets[index];
+        map->buckets[index] = new_pair;
+        map->size++;
+    }
 }
 
 void enlarge(HashMap * map) {

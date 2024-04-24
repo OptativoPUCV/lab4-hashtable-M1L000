@@ -38,12 +38,15 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
-void resuelve(HashMap *map, int *posicion)
+int resuelve(HashMap *map, int posicion)
 {
-   while(map->buckets[(*posicion)] != NULL)
+   while(map->buckets[(posicion)] != NULL)
      {
-       (*posicion)++;
-     }  
+       if(map->buckets[posicion] == NULL) return posicion;
+       (posicion)++;
+       
+     }
+  
 }
 
 
@@ -57,7 +60,7 @@ void insertMap(HashMap * map, char * key, void * value) {
     }
     else
     {
-      resuelve(map,&indice);
+      int nuevo = resuelve(map,indice);
       strcpy(map->buckets[indice]->key,key);
       map->buckets[indice]->value = value;
     }

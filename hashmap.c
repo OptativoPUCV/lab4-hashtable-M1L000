@@ -56,14 +56,14 @@ void insertMap(HashMap * map, char * key, void * value) {
     {
       map->buckets[indice] = createPair(key, value);
       (map->size)++;
-      (map->current)++;
+      (map->current) = indice;
     }
     else
     {
       long nuevo = resuelve(map,indice);
       map->buckets[nuevo] = createPair(key,value);
       (map->size)++;
-      (map->current)++;
+      (map->current) = nuevo;
     }
 
 }

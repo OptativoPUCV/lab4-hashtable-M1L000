@@ -244,3 +244,36 @@ Wed 24 Apr 2024 07:44:30 PM UTC:
  1 file changed, 1 insertion(+), 1 deletion(-)
  tests:  0|0
 f24ac14
+Wed 24 Apr 2024 07:47:14 PM UTC: 
+ hashmap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:56:31: error: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Werror=int-conversion]
+   56 |     if(map==NULL || strcmp(key==NULL) return;
+      |                               ^
+      |                               |
+      |                               int
+In file included from test.c:3:
+/nix/store/4pqv2mwdn88h7xvsm7a5zplrd8sxzvw0-glibc-2.35-163-dev/include/string.h:156:32: note: expected ‘const char *’ but argument is of type ‘int’
+  156 | extern int strcmp (const char *__s1, const char *__s2)
+      |                    ~~~~~~~~~~~~^~~~
+In file included from test.c:4:
+hashmap.c:56:21: error: too few arguments to function ‘strcmp’
+   56 |     if(map==NULL || strcmp(key==NULL) return;
+      |                     ^~~~~~
+In file included from test.c:3:
+/nix/store/4pqv2mwdn88h7xvsm7a5zplrd8sxzvw0-glibc-2.35-163-dev/include/string.h:156:12: note: declared here
+  156 | extern int strcmp (const char *__s1, const char *__s2)
+      |            ^~~~~~
+In file included from test.c:4:
+hashmap.c:56:38: error: expected ‘)’ before ‘return’
+   56 |     if(map==NULL || strcmp(key==NULL) return;
+      |       ~                              ^~~~~~~
+      |                                      )
+hashmap.c:74:1: error: expected expression before ‘}’ token
+   74 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+fa3aea5

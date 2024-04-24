@@ -57,35 +57,7 @@ long resuelveColision(HashMap *map, int posicion, char *key) {
 }
 
 
-void insertMap(HashMap * map, char * key, void * value) {
-    if(map == NULL || key == NULL)
-        return;
 
-    long index = hash(key, map->capacity);
-
-    // If the bucket at the index is empty, create a new pair and insert it
-    if(map->buckets[index] == NULL) {
-        map->buckets[index] = createPair(key, value);
-        map->size++;
-    } else {
-        // Collision occurred, handle it using separate chaining
-        // Traverse the linked list to check if the key already exists
-        Pair *current = map->buckets[index];
-        while(current != NULL) {
-            if(is_equal(current->key, key)) {
-                // Key already exists, update the value and return
-                current->value = value;
-                return;
-            }
-            current = current->next;
-        }
-        // Key doesn't exist in the linked list, create a new pair and append it
-        Pair *new_pair = createPair(key, value);
-        new_pair->next = map->buckets[index];
-        map->buckets[index] = new_pair;
-        map->size++;
-    }
-}
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)

@@ -163,8 +163,7 @@ Pair * nextMap(HashMap * map) {
     if(map == NULL){
       return NULL;
     }
-    Pair *n = createPair(NULL, NULL);
-    Pair n = firstMap(map);
+    firstMap(map);
     while(map->current < map->capacity)
       {
         if(map->buckets[map->current] != NULL && map->buckets[map->current]->key != NULL)

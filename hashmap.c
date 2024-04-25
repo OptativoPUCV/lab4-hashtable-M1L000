@@ -109,15 +109,13 @@ void eraseMap(HashMap * map,  char * key) {
   if(map == NULL || key == NULL){
     return;
   }
-  int index = hash(key, map->capacity);
-  while(map->buckets[index] != NULL && map->buckets[index]->key != NULL ){
-    if(is_equal(map->buckets[index]->key, key)){
-      map->buckets[index] = NULL;
-      map->size--;
-      return;
-    }
-    index = (index + 1) % map->capacity;
+  Pair Elemento = searchMap(map, key);
+  if(Elemento != NULL)
+  {
+    map->size--;
+    Elemento = NULL;
   }
+  
   return;
 
 

@@ -462,3 +462,20 @@ hashmap.c:167:10: error: unused variable ‘index’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 9bb6a4d
+Thu 25 Apr 2024 08:24:06 PM UTC: 
+ hashmap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:167:11: error: redefinition of ‘n’
+  167 |     Pair *n = firstMap(map);
+      |           ^
+hashmap.c:166:11: note: previous definition of ‘n’ with type ‘Pair *’
+  166 |     Pair *n = createPair(NULL, NULL);
+      |           ^
+hashmap.c:167:11: error: unused variable ‘n’ [-Werror=unused-variable]
+  167 |     Pair *n = firstMap(map);
+      |           ^
+cc1: all warnings being treated as errors
+Compilation failed
+356f912

@@ -64,22 +64,23 @@ void insertMap(HashMap * map, char * key, void * value) {
     long index = hash(key, map->capacity);
 
     // If the bucket at the index is empty, create a new pair and insert it
-    if(map->buckets[index] == NULL) {
+    if(map->buckets[index] == NULL) 
+    {
         map->buckets[index] = createPair(key, value);
         map->size++;
-    } else {
-        // Collision occurred, handle it using separate chaining
-        // Traverse the linked list to check if the key already exists
+    } 
+    else 
+    {
         long current = index; // current indica la posición actual en la tabla hash
-        while(map->buckets[current] != NULL) {
-            if(is_equal(map->buckets[current]->key, key)) {
-                // Key already exists, update the value and return
+        while(map->buckets[current] != NULL) 
+        {
+            if(is_equal(map->buckets[current]->key, key)) 
+            {
                 map->buckets[current]->value = value;
                 return;
             }
             current = resuelveColision(map, current, key); // Actualizamos current según la resolución de colisiones
         }
-        // Key doesn't exist in the linked list, create a new pair and append it
         Pair *new_pair = createPair(key, value);
         map->buckets[current] = new_pair; // Insertamos el nuevo par en la posición encontrada
         map->size++;
@@ -109,10 +110,20 @@ void eraseMap(HashMap * map,  char * key) {
 
 }
 
-Pair * searchMap(HashMap * map,  char * key) {   
-
-
+Pair * searchMap(HashMap * map,  char * key) 
+{   
+    if(map == NULL || key == NULL) return NULL;
+    int index = hash(key, map->capacity);
+    while(map->buckets[index] != NULL)
+      {
+        if(is_equal(map->buckets[index]->key, key))
+        {
+          return map->buckets[index];
+        }
+        index = resuelveColision(map, index, key);
+      }
     return NULL;
+
 }
 
 Pair * firstMap(HashMap * map) {

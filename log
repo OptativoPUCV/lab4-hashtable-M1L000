@@ -425,3 +425,17 @@ Thu 25 Apr 2024 08:17:16 PM UTC:
  tests:  13|2
 total_score: 50/70
 eca6798
+Thu 25 Apr 2024 08:22:32 PM UTC: 
+ hashmap.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:166:18: error: invalid initializer
+  166 |     Pair index = firstMap(map);
+      |                  ^~~~~~~~
+hashmap.c:166:10: error: unused variable ‘index’ [-Werror=unused-variable]
+  166 |     Pair index = firstMap(map);
+      |          ^~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+58eeb46

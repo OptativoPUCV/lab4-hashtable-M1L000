@@ -160,5 +160,18 @@ Pair * firstMap(HashMap * map)
 
 Pair * nextMap(HashMap * map) {
 
+    if(map == NULL){
+      return NULL;
+    }
+    Pair index = firstMap(map);
+    while(map->current < map->capacity)
+      {
+        if(map->buckets[map->current] != NULL && map->buckets[map->current]->key != NULL)
+        {
+          return map->buckets[map->current];
+        }
+        map->current++;
+      }
+
     return NULL;
 }

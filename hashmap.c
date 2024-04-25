@@ -133,10 +133,9 @@ Pair * searchMap(HashMap * map,  char * key)
           i++;
           current = (index + i) % map->capacity;
         }
-      
+      return NULL;
     }
-    return NULL;
-
+  return NULL;
 }
 
 Pair * firstMap(HashMap * map) {

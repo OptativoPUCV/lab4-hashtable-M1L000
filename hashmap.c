@@ -119,19 +119,17 @@ Pair * searchMap(HashMap * map,  char * key)
       Pair *Encontrado = createPair(map->buckets[index]->key, map->buckets[index]->value);
       return Encontrado;
     }
-  else
+    else
     {
-      int i = 1;
-      int current = (index + i) % map->capacity;
-      while(map->buckets[current] != NULL)
+      
+      while(map->buckets[index] != NULL)
         {
-          if(is_equal(map->buckets[current]->key, key) == 1)
+          if(is_equal(map->buckets[index]->key, key) == 1)
           {
-            Pair *Encontrado = createPair(map->buckets[current]->key, map->buckets[current]->value);
+            Pair *Encontrado = createPair(map->buckets[index]->key, map->buckets[index]->value);
             return Encontrado;
           }
-          i++;
-          current = (index + i) % map->capacity;
+          index++;
         }
       return NULL;
     }

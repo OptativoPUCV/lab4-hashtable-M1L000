@@ -479,3 +479,23 @@ hashmap.c:167:11: error: unused variable ‘n’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 356f912
+Thu 25 Apr 2024 08:24:14 PM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:167:10: error: conflicting types for ‘n’; have ‘Pair’
+  167 |     Pair n = firstMap(map);
+      |          ^
+hashmap.c:166:11: note: previous definition of ‘n’ with type ‘Pair *’
+  166 |     Pair *n = createPair(NULL, NULL);
+      |           ^
+hashmap.c:167:14: error: invalid initializer
+  167 |     Pair n = firstMap(map);
+      |              ^~~~~~~~
+hashmap.c:167:10: error: unused variable ‘n’ [-Werror=unused-variable]
+  167 |     Pair n = firstMap(map);
+      |          ^
+cc1: all warnings being treated as errors
+Compilation failed
+9299795

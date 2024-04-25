@@ -439,3 +439,26 @@ hashmap.c:166:10: error: unused variable ‘index’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 58eeb46
+Thu 25 Apr 2024 08:23:15 PM UTC: 
+ hashmap.c | 1 +
+ 1 file changed, 1 insertion(+)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:166:18: error: invalid initializer
+  166 |     Pair index = createPair(NULL, NULL);
+      |                  ^~~~~~~~~~
+hashmap.c:167:10: error: redefinition of ‘index’
+  167 |     Pair index = firstMap(map);
+      |          ^~~~~
+hashmap.c:166:10: note: previous definition of ‘index’ with type ‘Pair’
+  166 |     Pair index = createPair(NULL, NULL);
+      |          ^~~~~
+hashmap.c:167:18: error: invalid initializer
+  167 |     Pair index = firstMap(map);
+      |                  ^~~~~~~~
+hashmap.c:167:10: error: unused variable ‘index’ [-Werror=unused-variable]
+  167 |     Pair index = firstMap(map);
+      |          ^~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+9bb6a4d

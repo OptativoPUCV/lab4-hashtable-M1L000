@@ -163,6 +163,7 @@ Pair * nextMap(HashMap * map) {
     if(map == NULL){
       return NULL;
     }
+    Pair index = createPair(NULL, NULL);
     Pair index = firstMap(map);
     while(map->current < map->capacity)
       {

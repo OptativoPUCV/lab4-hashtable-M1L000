@@ -110,29 +110,18 @@ void eraseMap(HashMap * map,  char * key) {
 
 }
 
-Pair * searchMap(HashMap * map,  char * key) 
-{   
-    if(map == NULL || key == NULL) return NULL;
-    int index = hash(key, map->capacity);
-    if(is_equal(map->buckets[index]->key, key) == 1)
-    {
-      Pair *Encontrado = createPair(map->buckets[index]->key, map->buckets[index]->value);
-      return Encontrado;
+Pair * searchMap(HashMap * map,  char * key) {
+  if(map == NULL || key == NULL){
+    return NULL;
+  }
+  int index = hash(key, map->capacity);
+  while(map->buckets[index] != NULL && map->buckets[index]->key != NULL ){
+    if(is_equal(map->buckets[index]->key, key)){
+      map->current = index;
+      return map->buckets[index];
     }
-    else
-    {
-      
-      while(map->buckets[index] != NULL)
-        {
-          if(is_equal(map->buckets[index]->key, key) == 1)
-          {
-            Pair *Encontrado = createPair(map->buckets[index]->key, map->buckets[index]->value);
-            return Encontrado;
-          }
-          index++;
-        }
-      return NULL;
-    }
+    index = (index + 1) % map->capacity;
+  }
   return NULL;
 }
 

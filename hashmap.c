@@ -130,6 +130,8 @@ Pair * searchMap(HashMap * map,  char * key)
             Pair *Encontrado = createPair(map->buckets[current]->key, map->buckets[current]->value);
             return Encontrado;
           }
+          i++;
+          current = (index + i) % map->capacity;
         }
       
     }

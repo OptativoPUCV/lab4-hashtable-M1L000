@@ -119,17 +119,20 @@ Pair * searchMap(HashMap * map,  char * key)
       Pair *Encontrado = createPair(map->buckets[index]->key, map->buckets[index]->value);
       return Encontrado;
     }
-  else{
-    int posicion = resuelveColision(map, index, key);
-    if(posicion == -1) return NULL;
-    Pair *Encontrado = createPair(map->buckets[posicion]->key, map->buckets[posicion]->value);
-    return Encontrado;
-  }
-    
-  
-  
+  else
+    {
+      int i = 1;
+      int current = (index + i) % map->capacity;
+      while(map->buckets[current] != NULL)
+        {
+          if(is_equal(map->buckets[current]->key, key) == 1)
+          {
+            Pair *Encontrado = createPair(map->buckets[current]->key, map->buckets[current]->value);
+            return Encontrado;
+          }
+        }
       
-    
+    }
     return NULL;
 
 }

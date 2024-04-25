@@ -114,14 +114,22 @@ Pair * searchMap(HashMap * map,  char * key)
 {   
     if(map == NULL || key == NULL) return NULL;
     int index = hash(key, map->capacity);
-    while(map->buckets[index] != NULL)
-      {
-        if(is_equal(map->buckets[index]->key, key))
-        {
-          return map->buckets[index];
-        }
-        index = resuelveColision(map, index, key);
-      }
+    if(is_equal(map->buckets[index]->key, key) == 1)
+    {
+      Pair *Encontrado = createPair(map->buckets[index]->key, map->buckets[index]->value);
+      return Encontrado;
+    }
+  else{
+    int posicion = resuelveColision(map, index, key);
+    if(posicion == -1) return NULL;
+    Pair *Encontrado = createPair(map->buckets[posicion]->key, map->buckets[posicion]->value);
+    return Encontrado;
+  }
+    
+  
+  
+      
+    
     return NULL;
 
 }
